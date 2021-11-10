@@ -1,0 +1,205 @@
+﻿.tree{
+    --background-menu: inherit;
+    --hover-menu: #f1f1eb;
+    --select-menu: #e7e7db;
+    --color-font: #141441;
+    --color-font-select: #10100f;
+    --color-font-hover: #090909
+
+}
+
+
+
+/*.menu ul {*/
+/*    padding-left: 0rem;*/
+/*    list-style-type: none;*/
+/*}*/
+
+/*.menu ul li {*/
+/*    padding-left: 0rem;*/
+
+/*    background-position: 0 0;*/
+/*    background-size: 1.6rem 1.6rem;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
+.tree .ionMenu{
+    position: relative;
+    background: var(--background-menu);
+    transition: all .1s linear;
+    padding: 0px 14px;
+    overflow-x: hidden;
+    height: 100%;
+    -ms-overflow-style: none;
+}
+.tree .ionMenu::-webkit-scrollbar { width: 0 !important }
+
+
+.tree .ionLink{
+    font-size: 18px;
+    color: var(--color-font);
+    text-decoration: none;
+}
+
+.tree .ionLink:hover{
+    color: var(--color-font-select);
+}
+
+/*
+стиль контейнера меню
+ */
+.tree .ionContainer li{
+    padding-left: 10px;
+    margin-top: 0px;
+
+}
+/**
+стиль коневой картинки
+ */
+.tree .ionImageMenu{
+    background: rgba(71, 71, 68, 0.95); /* Цвет фона */
+    border: 2px solid black; /* Параметры рамки */
+    padding-left: 3px; /* Поля вокруг текста */
+    padding-right: 3px;
+    margin: 3px;
+    border-radius: 5px;
+}
+/**
+Стиль картинки субменю
+ */
+.tree .ionImageSubMenu{
+    background: inherit; /* Цвет фона */
+    border: 2px solid inherit; /* Параметры рамки */
+    padding-left: 3px; /* Поля вокруг текста */
+    padding-right: 3px;
+
+    margin: 3px;
+    border-radius: 5px;
+
+}
+/**
+Стиль корневого меню не выбранного
+ */
+.tree .defaultMenu{
+    padding-left: 10px;
+    margin-top: 0px;
+}
+.tree .defaultMenu:hover{
+    background: var(--hover-menu);
+}
+/**
+Стиль корневого меню выбранного
+ */
+.tree .selectMenu{
+    background: var(--select-menu);
+    padding-left: 10px;
+    margin-top: 0px;
+    color: var(--color-font-hover);
+
+}
+
+/**
+стиль субменю не выбранное
+ */
+.tree .defaultSubMenu{
+    position: relative;
+    margin-left: 0px;
+    font-size: 15px;
+    padding-left: 3px;
+}
+
+/**
+стиль субменю выбранное
+ */
+.tree .selectSubMenu{
+
+    position: relative;
+    background: var(--select-menu);
+    font-size: 15px;
+    color: var(--color-font-hover);
+    margin-left: 0px;
+    padding-left: 3px;
+
+}
+.tree .defaultSubMenu:hover{
+    background: var(--hover-menu);
+}
+/**
+Стиль заголовка
+ */
+.tree .ionSideHead{
+    color: white;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+}
+
+
+/**
+Стиль иконки закрытия-открытия
+ */
+.tree .toggleOpen{
+    position: fixed;
+    left: 17px;
+    bottom: 6px;
+}
+
+
+
+
+
+/*#menu ul{*/
+/*    padding: 0;*/
+/*    padding-left: 10px; !*отступ слева - корневой элемент*!*/
+/*}*/
+
+/*#menu li {*/
+
+/*     padding: 0;*/
+/*    padding-left: 110px; !*отступ слева субменю от родителя*!*/
+/*}*/
+
+.tree .container-fluid {
+    padding: 0;
+    overflow: hidden;
+}
+/**
+стиль иконки для открытия субменю
+ */
+.tree .ionImageToggle{
+    padding-right: 15px;
+}
+.tree .movediv{
+    /* запретить выделение*/
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+.tree .treePreImage{
+    position: absolute;
+
+    left: -40px;
+    top:0px;
+    z-index: 10000;
+
+}
+
+.tree .hamburger {
+    position: absolute;
+    left: 15px;
+    bottom: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+.tree .ionJumbo {
+    background-color: #b23660;
+    margin: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
