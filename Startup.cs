@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ORM_1_21_;
 
 namespace usmbase
 {
@@ -75,6 +76,8 @@ namespace usmbase
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+            var c = new Configure("Server=192.168.70.120;Port=5432;Database=suz;User Id=postgres;Password=postgres;",
+                ProviderName.Postgresql, null);
         }
     }
     public class RawJsonBodyInputFormatter : InputFormatter

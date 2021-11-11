@@ -179,7 +179,24 @@ export default class WrapperSideBar {
         this.imageSrcOpen=null;
 
 
+        /**
+         * Выделять меню или не выделять, случай пользовательский компонент
+         * @type {boolean}
+         */
         this.isSelected=true;
+
+        /**
+         * Пользовательские данные
+         * @type {undefined}
+         */
+        this.userData=undefined;
+
+        this.userData1=undefined;
+
+
+        this.userData2=undefined;
+
+        this.userData3=undefined;
     }
 }
 

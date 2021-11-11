@@ -164,7 +164,7 @@ class SideBarion extends PureComponent{
             }else{
                 if (typeof row.imageSrcOpen === 'string') {
                     return ((<div className="col-md-auto ionImageSubMenu ">
-                          <Image src={row.imageSrcO} alt={row.imageAlt} width={row.imageSize} height={row.imageSize}/>
+                          <Image src={row.imageSrcOpen} alt={row.imageAlt} width={row.imageSize} height={row.imageSize}/>
                     </div>));
                 } else {
                     return (
