@@ -11,7 +11,7 @@ import {barData} from "./components/models/MStartMenu";
 import {barDataTree} from "./components/models/MOrederTree";
 
 
-const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
+
 
 {
     barData.closeWidth=60;// ширина зарытого

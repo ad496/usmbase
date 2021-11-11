@@ -208,10 +208,12 @@
 .menu-wrapper .defaultMenuNotSelected{
     padding-left: 10px;
     margin-top: 0px;
+    cursor: default;
 }
 .menu-wrapper .defaultSubMenuNotSelected{
     position: relative;
     margin-left: 0px;
     font-size: 15px;
     padding-left: 3px;
+    cursor: default;
 }

@@ -1,6 +1,10 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +27,11 @@ namespace usmbase
 
             services.AddControllersWithViews();
 
+            services
+                .AddMvc(options =>
+                {
+                    options.InputFormatters.Insert(0, new RawJsonBodyInputFormatter());
+                });
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -54,7 +63,7 @@ namespace usmbase
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                    pattern: "/");
             });
 
             app.UseSpa(spa =>
@@ -66,6 +75,28 @@ namespace usmbase
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+        }
+    }
+    public class RawJsonBodyInputFormatter : InputFormatter
+    {
+        public RawJsonBodyInputFormatter()
+        {
+            this.SupportedMediaTypes.Add("application/json");
+        }
+
+        public override async Task<InputFormatterResult> ReadRequestBodyAsync(InputFormatterContext context)
+        {
+            var request = context.HttpContext.Request;
+            using (var reader = new StreamReader(request.Body))
+            {
+                var content = await reader.ReadToEndAsync();
+                return await InputFormatterResult.SuccessAsync(content);
+            }
+        }
+
+        protected override bool CanReadType(Type type)
+        {
+            return type == typeof(string);
         }
     }
 }

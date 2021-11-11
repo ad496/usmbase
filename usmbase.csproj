@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.9" />
+    <PackageReference Include="Npgsql" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +19,15 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NLog">
+      <HintPath>NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="ORM{1_21}">
+      <HintPath>ORM{1_21}.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
