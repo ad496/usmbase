@@ -4,7 +4,7 @@ import { BiHome,BiSearchAlt,BiTask} from "react-icons/bi";
 import { MdSubdirectoryArrowRight } from "react-icons/md";
 import { FiAlignJustify } from "react-icons/fi";
 import { BsCaretRight,BsCaretDown } from "react-icons/bs";
-import {ChecкBoxItemMenu} from "../checkboxbase/CheckBoxBase";
+import {ComboBoxItemMenu} from "../checkboxbase/ComboBoxBase";
 
 
 export   const barData=new BarData();
@@ -13,11 +13,12 @@ export const colorImage="#efec12"
 barData.head=new Head("Gjcnj");
 {
     const mymenu=new MenuItem();
-    mymenu.content=<ChecкBoxItemMenu/>
+    mymenu.content=<ComboBoxItemMenu/>
     mymenu.isShow=true;
     mymenu.href="#";
     mymenu.isSelected=false;
     barData.menuItems.push(mymenu);
+
 }
 {
     const mymenu=new MenuItem();
@@ -26,6 +27,7 @@ barData.head=new Head("Gjcnj");
     mymenu.href="/";
     mymenu.tooltip="Домашняя страница"
     mymenu.imageSrc=<BiHome size={sizeRootMenu}  color={colorImage}/>
+    mymenu.userData3="home"
     barData.menuItems.push(mymenu);
 }
 
@@ -35,6 +37,7 @@ barData.head=new Head("Gjcnj");
     mymenu.isShow=true;
     mymenu.href="search";
     mymenu.tooltip="Поиск по фрагменту кода"
+    mymenu.userData3="search"
     mymenu.imageSrc=<BiSearchAlt size={sizeRootMenu}  color={colorImage}/>
     barData.menuItems.push(mymenu);
 }
@@ -45,6 +48,7 @@ barData.head=new Head("Gjcnj");
     mymenu.isShow=true;
     mymenu.href="orders";
     mymenu.tooltip="Заказы в контексте базы"
+    mymenu.userData3="orders"
     mymenu.imageSrc=<BiTask size={sizeRootMenu}  color={colorImage}/>
     barData.menuItems.push(mymenu);
 }

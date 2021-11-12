@@ -43,6 +43,7 @@ export function OrderMediator(data, menu) {
         mymenu.userData1 = "order"
         mymenu.userData2 = menu;
         barDataTree.menuItems.push(mymenu);
+        mymenu.userData3="pallet"
         return false;
 
     })
@@ -71,6 +72,7 @@ export function PalletMediator(data, menu) {
         mymenu.userData = o;
         mymenu.userData1 = "pallet"
         mymenu.userData2 = menu;
+        mymenu.userData3="box"
         list.push(mymenu);
         return false;
     })
@@ -102,6 +104,7 @@ export function BoxtMediator(data, menu) {
         mymenu.userData = o;
         mymenu.userData1 = "box"
         mymenu.userData2 = menu;
+        mymenu.userData3="block"
         list.push(mymenu);
 
         return false
@@ -135,6 +138,7 @@ export function BlockMediator(data, menu) {
 
         mymenu.userData = o;
         mymenu.userData1 = "block"
+        mymenu.userData3="pack"
         mymenu.userData2 = menu;
         list.push(mymenu);
         return false;

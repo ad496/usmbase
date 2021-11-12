@@ -115,17 +115,19 @@ class SideBarion extends PureComponent{
             if(d.isSelected===true){ // если запрещено выделять этот нод, выделение строго не снимаем
                 this.mapMenu.forEach((v)=>{
                     v._isSelect=false; // снимаем выделение со всех нодов
-                })  
+                })
+
+                d._isSelect=true; // выделяем нажатый нод
+                d._isVisibleSubmenu = d._isVisibleSubmenu === false;// показываем или закрываем субменю у этого меню
+                if(this.currentMenuItem.id!==uuid){ // если текущее меню не совпадает с нажатым
+                    this.currentMenuItem=d;// текущее делаем нажатым
+                    this.isRender=true;// ставим метку, чтобы после рендеринга ушло сообщение наружу
+
+                }
+                this.forceUpdate();// кучной рендеринг
             }
             
-            d._isSelect=true; // выделяем нажатый нод
-            d._isVisibleSubmenu = d._isVisibleSubmenu === false;// показываем или закрываем субменю у этого меню
-            if(this.currentMenuItem.id!==uuid){ // если текущее меню не совпадает с нажатым
-                this.currentMenuItem=d;// текущее делаем нажатым
-                this.isRender=true;// ставим метку, чтобы после рендеринга ушло сообщение наружу
-
-            }
-            this.forceUpdate();// кучной рендеринг
+          
 
 
 
@@ -249,16 +251,33 @@ class SideBarion extends PureComponent{
                         return(
                             <li key={row.id} className="container  ionContainer " style={{display:row.isShow===true?"block":"none"}}>
 
-                                <Link to={row.href} className="ionLink">
-                                    <div  className={this.getClassNameSubMenuItem(row)} id={row.id} onClick={()=>{this.clickItem(row.id)}}>
-                                        {checkI.bind(this)(row,i)}
-                                       {this.refreshImage(row)}
-                                        <div className="col align-self-center">
-                                            {this.refreshContent(row)}
+                                {row.isSelected?(
+
+                                    <Link to={row.href} className="ionLink">
+                                        <div  className={this.getClassNameSubMenuItem(row)} id={row.id} onClick={()=>{this.clickItem(row.id)}}>
+                                            {checkI.bind(this)(row,i)}
+                                            {this.refreshImage(row)}
+                                            <div className="col align-self-center">
+                                                {this.refreshContent(row)}
+                                            </div>
+                                            {this.refreshImageToggleMenu(row)}
                                         </div>
-                                        {this.refreshImageToggleMenu(row)}
-                                    </div>
-                                </Link>
+                                    </Link>
+                                    
+                                ):(
+                                    
+                                        <div  className={this.getClassNameSubMenuItem(row)} id={row.id} onClick={()=>{this.clickItem(row.id)}}>
+                                            {checkI.bind(this)(row,i)}
+                                            {this.refreshImage(row)}
+                                            <div className="col align-self-center">
+                                                {this.refreshContent(row)}
+                                            </div>
+                                            {this.refreshImageToggleMenu(row)}
+                                        </div>
+                                  
+                                    
+                                )}
+                                
                                 {this.renderSubmenu(row)}
                             </li>
                         );
@@ -447,9 +466,14 @@ class SideBarion extends PureComponent{
                                     {this.barData.menuItems.map((row,i)=>{
                                         return (
                                             <li key={row.id} className="container  ionContainer p-0 menuitem" style={{display:row.isShow===true?"block":"none"}} >
-                                                <Link to={row.href} className="ionLink">
-                                                    {this.overlayTooltipMenu(row,i)}
-                                                </Link>
+                                                {row.isSelected?(
+                                                    <Link to={row.href} className="ionLink">
+                                                        {this.overlayTooltipMenu(row,i)}
+                                                    </Link>
+                                                ):(
+                                                    this.overlayTooltipMenu(row,i)
+                                                )}
+                                               
                                                 {this.renderSubmenu(row)}
                                             </li>
                                         );

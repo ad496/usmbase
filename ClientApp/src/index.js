@@ -1,3 +1,4 @@
+import "./components/Init"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import "./components/models/menuHome.css"
@@ -116,8 +117,7 @@ function callbackTree(menuItem) {
 
 function callbackMenu(menuitem) {
     ReactDOM.unmountComponentAtNode(document.getElementById("root2"));
-    if (menuitem.href === "orders") {
-
+    if (menuitem.userData3 === "orders") {
 
         const b = new RequestUsm();
         b.base = "suz";
