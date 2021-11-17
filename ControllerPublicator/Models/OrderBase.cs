@@ -57,6 +57,8 @@ namespace usmbase.ControllerPublicator.Models
         [Description("Дата создания заказа")]
         [MapColumnName("DateCreate")]
         public DateTime DateCreate { get; set; }
+        
+        public string DateTimeToString => DateCreate.ToString("MM/dd/yyyy");
 
         
     }

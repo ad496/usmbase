@@ -34,6 +34,7 @@ export default class WrapperSideBar {
         this.menuItems=[]
         this._openWidth=300;
         this._currentWidth=300
+        this.mapMenu= new Map();
         /**
          * иконка для трее, строка или jsx
          * @type {string|JSX.Element}
@@ -66,12 +67,32 @@ export default class WrapperSideBar {
          * @type {string|JSX.Element}
          */
         this.iconToggleMenu=undefined
+        this.refreshMap.bind(this)
         
         
 
+       
 
 
     }
+
+     refreshMap(){
+
+        this.menuItems.map((m)=>{
+            this._innerRefreshMap(m)
+        })
+     }
+     _innerRefreshMap(m){
+        if(this.mapMenu.has(!m.id)){
+            this.map.set(m.id,m)
+        }
+        if(m.menuItems){
+            m.menuItems.map((mm)=>{
+                this._innerRefreshMap(mm)
+            })
+        }
+      
+     }
 
      /**
       * установка ширины открытого меню
@@ -91,6 +112,29 @@ export default class WrapperSideBar {
     forceUpdate(){
         this.dispatch("render",{})
     }
+
+     rollUp(){
+         if(this.menuItems){
+             this.menuItems.map((m)=>{this._innerPollUp(m)
+             })
+         }
+         this.forceUpdate();
+
+     }
+     _innerPollUp(menu=[]){
+
+         menu._isSelect=false;
+         menu._isVisibleSubmenu=false;
+         if(menu.menuitem){
+             menu.menuitem.map((m1)=>{
+                 this._innerPollUp(m1)
+             })
+
+         }
+
+     }
+     
+  
 }
 
 /**

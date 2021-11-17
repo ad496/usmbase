@@ -4,6 +4,8 @@ import {FiAlignJustify} from "react-icons/fi";
 import {BsCaretDown, BsCaretRight} from "react-icons/bs";
 import React from "react";
 import {colorImage, imgSize} from "../models/MOrederTree";
+import { generatePath } from "react-router";
+import {parserUrl} from "../models/ParserUrl";
 
 
 function getPath(menuItem) {
@@ -21,22 +23,43 @@ function getPath(menuItem) {
 //orderKey: "aebf289d-be28-4b35-8c12-fc99b047edf4"
 //pkCount: 99000
 //pkPrice: 0
+
 export function OrderMediator(data, menu) {
 
-
+    function span(o){
+        return(
+            <div style={{display:"block"}}>
+                <span style={{fontSize:"10px"}}>{o.dateTimeToString+" "}</span>
+                <span style={{fontWeight:"bold"}}>{o.ordNom+" "}</span>
+                    <span>{o.firstName}</span>
+                <span style={{fontWeight:"bold"}}>{o.ordText}</span>
+                <span>{o.lastName}</span>
+                
+            </div>
+        );
+    }
     const barDataTree = new BarData();
     barDataTree.iconTree = <MdSubdirectoryArrowRight size={imgSize} color={colorImage}/>
     barDataTree.iconToggleMenu = <FiAlignJustify size={30} color={colorImage}/>
     barDataTree.imageToggleNode1 = <BsCaretRight size={20} color={colorImage}/>
     barDataTree.imageToggleNode2 = <BsCaretDown size={20} color={colorImage}/>
     data.map((o, i) => {
-
-        console.log(window.location.href)
         const mymenu = new MenuItem();
-        mymenu.content = o.ordNom + " " + o.firstName + " " + o.ordText + " " + o.lastName
+        mymenu.content =span(o)
         mymenu.isShow = true;
         mymenu.id = o.orderKey;
-        mymenu.href = `/pallet/${o.orderKey}`;
+        mymenu.href =(l)=>{
+            const os=parserUrl.getObject(l.pathname);  
+            if(os.order===undefined){
+                return l.pathname+"/"+o.orderKey 
+            }else{
+               
+                    return {
+                        pathname: `/${os.base}/orders/${o.orderKey}`,
+                    }
+               
+            }
+        } ;
         mymenu.imageSrc = "./box_close.png"
         mymenu.imageSrcOpen = "./box_open.png"
         mymenu.userData = o;
@@ -60,14 +83,35 @@ export function PalletMediator(data, menu) {
     // numberItem: 1
     // orderKey: "2f1758e9-dfb7-4f1e-a3f9-6e664e496c68"
 
+    function span(o){
+        return(
+            <div style={{display:"block"}}>
+                
+                <span style={{fontWeight:"bold"}}>{`№: ${o.numberItem} `}</span>
+                <span>{o.km}</span>
+                
+
+            </div>
+        );
+    }
+
     const list = []
     data.map((o, i) => {
 
         const mymenu = new MenuItem();
-        mymenu.content = o.km
+        mymenu.content = span(o)
         mymenu.isShow = true;
         mymenu.id = o.id;
-        mymenu.href = `/order/${o.id}`;
+        mymenu.href =(l)=>{
+            const os=parserUrl.getObject(l.pathname);
+            if(os.pallet===undefined){
+                return l.pathname+"/"+o.id
+            }else{
+                return {
+                    pathname: `/${os.base}/orders/${o.orderKey}/${o.id}`,
+                }
+            }
+        } ;
         mymenu.imageSrc = "./pallet.png"
         mymenu.userData = o;
         mymenu.userData1 = "pallet"
@@ -91,15 +135,31 @@ export function BoxtMediator(data, menu) {
     // numberItem: 1
     // orderKey: "e75da851-603b-42d0-b7b5-57ba628b7cf2"
 
-
+    function span(o){
+        return(
+            <div style={{display:"block"}}>
+                <span style={{fontWeight:"bold"}}>{`№: ${o.numberItem} `}</span>
+                <span>{o.km}</span>
+            </div>
+        );
+    }
     const list = []
     data.map((o) => {
 
         const mymenu = new MenuItem();
-        mymenu.content = o.km
+        mymenu.content = span(o)
         mymenu.isShow = true;
         mymenu.id = o.id;
-        mymenu.href = `/box/${o.id}`;
+        mymenu.href =(l)=>{
+            const os=parserUrl.getObject(l.pathname);
+            if(os.box===undefined){
+                return l.pathname+"/"+o.id
+            }else{
+                return {
+                    pathname: `/${os.base}/orders/${os.order}/${os.pallet}/${o.id}`,
+                }
+            }
+        } ;
         mymenu.imageSrc = "./box.png"
         mymenu.userData = o;
         mymenu.userData1 = "box"
@@ -133,9 +193,17 @@ export function BlockMediator(data, menu) {
         mymenu.content = o.km
         mymenu.isShow = true;
         mymenu.id = o.id;
-        mymenu.href = `/box/${o.id}`;
+        mymenu.href =(l)=>{
+            const os=parserUrl.getObject(l.pathname);
+            if(os.block===undefined){
+                return l.pathname+"/"+o.id
+            }else{
+                return {
+                    pathname: `/${os.base}/orders/${os.order}/${os.pallet}/${os.box}/${o.id}`,
+                }
+            }
+        } ;
         mymenu.imageSrc = "./block.png"
-
         mymenu.userData = o;
         mymenu.userData1 = "block"
         mymenu.userData3="pack"
@@ -168,7 +236,16 @@ export function PackMediator(data, menu) {
         mymenu.content = o.km
         mymenu.isShow = true;
         mymenu.id = o.id;
-        mymenu.href = `/pack/${o.id}`;
+        mymenu.href =(l)=>{
+            const os=parserUrl.getObject(l.pathname);
+            if(os.pack===undefined){
+                return l.pathname+"/"+o.id
+            }else{
+                return {
+                    pathname: `/${os.base}/orders/${os.order}/${os.pallet}/${os.box}/${os.block}/${o.id}`,
+                }
+            }
+        } ;
         mymenu.imageSrc = "./pack.png"
         mymenu.userData = o;
         mymenu.userData1 = "pack"

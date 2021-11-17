@@ -29,6 +29,7 @@
             this._jsonBody=requestOptions.body;
             const h=FetchServerPost.getDataHach(this._jsonBody)
             if(h){
+                
                 this._fnSuccess(h)
             }else {
                 const response = await fetch(this._url, requestOptions);

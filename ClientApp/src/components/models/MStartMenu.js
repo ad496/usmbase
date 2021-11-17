@@ -5,6 +5,7 @@ import { MdSubdirectoryArrowRight } from "react-icons/md";
 import { FiAlignJustify } from "react-icons/fi";
 import { BsCaretRight,BsCaretDown } from "react-icons/bs";
 import {ComboBoxItemMenu} from "../checkboxbase/ComboBoxBase";
+import { generatePath } from "react-router";
 
 
 export   const barData=new BarData();
@@ -24,7 +25,15 @@ barData.head=new Head("Gjcnj");
     const mymenu=new MenuItem();
     mymenu.content="Home"
     mymenu.isShow=true;
-    mymenu.href="/";
+    mymenu.href=()=>{
+    const d=document.querySelector('#base-id')
+    if(d){
+        return generatePath("/:base/:menu", {
+            base: d.value,
+            menu:"home"
+        })
+
+    }};
     mymenu.tooltip="Домашняя страница"
     mymenu.imageSrc=<BiHome size={sizeRootMenu}  color={colorImage}/>
     mymenu.userData3="home"
@@ -35,7 +44,16 @@ barData.head=new Head("Gjcnj");
     const mymenu=new MenuItem();
     mymenu.content="Поиск по коду"
     mymenu.isShow=true;
-    mymenu.href="search";
+    mymenu.href=()=>{
+    const d=document.querySelector('#base-id')
+    if(d){
+        //manager.pingListen()
+        return generatePath("/:base/:menu", {
+            base: d.value,
+            menu:"search"
+        })
+
+    }};
     mymenu.tooltip="Поиск по фрагменту кода"
     mymenu.userData3="search"
     mymenu.imageSrc=<BiSearchAlt size={sizeRootMenu}  color={colorImage}/>
@@ -46,7 +64,16 @@ barData.head=new Head("Gjcnj");
     const mymenu=new MenuItem();
     mymenu.content="Заказы"
     mymenu.isShow=true;
-    mymenu.href="orders";
+    mymenu.href=()=>{
+    const d=document.querySelector('#base-id')
+    if(d){
+        //manager.pingListen()
+        return generatePath("/:base/:menu", {
+            base: d.value,
+            menu:"orders"
+        })
+
+    }};
     mymenu.tooltip="Заказы в контексте базы"
     mymenu.userData3="orders"
     mymenu.imageSrc=<BiTask size={sizeRootMenu}  color={colorImage}/>

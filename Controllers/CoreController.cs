@@ -3,9 +3,13 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 using usmbase.ControllerPublicator;
+using usmbase.ControllerPublicator.Models;
 
 namespace usmbase.Controllers
 {
@@ -21,36 +25,57 @@ namespace usmbase.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
-        public IActionResult Post(RequestUsm body)
+        [HttpPost]//
+        public IActionResult Post( [FromBody] string json)
         {
+            RequestUsm body = JsonConvert.DeserializeObject<RequestUsm>(json);
+            string @base = "suz";
+            switch (body.@base)
+            {
+                case 1:
+                {
+                    @base = "suz";
+                    break;
+                }
+                case 2:
+                {
+                    @base = "suz21";
+                    break;
+                }
+                case 3:
+                {
+                    @base = "suz22";
+                    break;
+                }
+                
+            }
             switch (body.table)
             {
                 case "order":
                 {
-                    var res=new OrderPublicator().GetData(body.@base, body.where);
+                    var res=OrderPublicator.GetDataOrder(body.@base, body.where);
                     return Ok(res);
                     break;
                 }
                 case "pallet":
                 {
-                    var res=new PalletPublicator().GetData(body.@base, body.where);
+                    var res=OrderPublicator.GetDataPallet(body.@base, body.where);
                     return Ok(res);
                 }
                 case "box":
                 {
-                    var res=new BoxPublicator().GetData(body.@base, body.where);
+                    var res= OrderPublicator.GetDataBox(body.@base, body.where);
                     return Ok(res);
                 }
                 case "block":
                 {
-                    var res=new BlockPublicator().GetData(body.@base, body.where);
+                    var res=OrderPublicator.GetDataBlock(body.@base, body.where);
                     return Ok(res);
                     break;
                 }
                 case "pack":
                 {
-                    var res=new PackPublicator().GetData(body.@base, body.where);
+                    var res=OrderPublicator.GetDataPack(body.@base, body.where);
                     return Ok(res);
                     break;
                 }
@@ -62,7 +87,7 @@ namespace usmbase.Controllers
 
     public class RequestUsm
     {
-        public string @base { get; set; }
+        public int @base { get; set; }
         public string table { get; set; }
         public string where { get; set; }
    
