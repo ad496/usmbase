@@ -81,9 +81,9 @@ namespace usmbase.Controllers
                 }
             }
 
-            if (body.searchTree != null && body.searchTree.str != null && body.searchTree.type > 0)
+            if (body.searchTree != null && body.searchTree.str != null && body.searchTree.type > 0&&body.@base>0)
             {
-                return null;
+                return Ok(new SearchPublicator(body.@base, body.searchTree.type).GetPath(body.searchTree.str));
             }
             
             return BadRequest(new Exception($"не могу обработать: {body.table}"));

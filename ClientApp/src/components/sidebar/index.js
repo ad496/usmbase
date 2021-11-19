@@ -448,6 +448,10 @@ class SideBarion extends PureComponent{
         document.addEventListener("mouseup", onMouseUp);
     }
     paintHead(){
+        const v=this?.barData?.head?.isShow?? false;
+        
+        if(v===false) return 
+        
         const  s=this.barData?.head?.content??undefined
         if(!s) return ;
         if(React.isValidElement(s)){
@@ -462,7 +466,7 @@ class SideBarion extends PureComponent{
      * @returns {JSX.Element}
      */
     render() {
-        console.log("66666666666666666666",this.barData.head)
+       
         return(
             <Router>
                 <div data-ismove="1" className="movediv"  style={{background:"inherit",paddingRight:"3px",cursor:"e-resize"}}

@@ -2,17 +2,21 @@
 import {OrdersWorker} from "./OrdersWorker";
 import ReactDOM from "react-dom";
 import {parserUrl} from "./components/models/ParserUrl";
-let curPath=undefined
+
 export class ObserverMenu{
     constructor(root) {
         this._root = root;
         this.init()
+        this.curPath=undefined
+    }
+    getObUrl(){
+        return parserUrl.getObject(this.curPath)
     }
     init(){
         
         uon((path)=>{
-            curPath=path;
-            const p=parserUrl.getObject(path)
+            this.curPath=path;
+          
            // console.log(p)
             {
                 const d= path.match("(\\/\\d\\/home)$")
@@ -42,6 +46,4 @@ export class ObserverMenu{
     }
 }
 
-export function getObjectUrl(){
-    return parserUrl(curPath)
-}
+export const observer=new ObserverMenu('root2')

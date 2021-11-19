@@ -11,7 +11,7 @@ import FetchServerPost, {RequestUsm} from "./Fetcher/FetchServer";
 
 import {parserUrl} from "./models/ParserUrl";
 import uon from "uon";
-import {getObjectUrl} from "../ObserverMenu";
+import {observer} from "../ObserverMenu";
 
 
 export class SearcherTree extends Component{
@@ -53,13 +53,14 @@ export class SearcherTree extends Component{
     }
     _searchCore(type){
       
-        const o=getObjectUrl
+        const o=observer.getObUrl();
         console.log(o)
 
         const b = new RequestUsm();
         b.base=o.base
         b.searchTree.type=type;
         b.searchTree.str=this.refE.current.value
+        console.log("eee",b)
         const f = new FetchServerPost({url: "/api/core/", body: b,menu:null});
         f.run((data) => {
 

@@ -10,7 +10,7 @@ namespace usmbase.ControllerPublicator
     
     public class OrderPublicator
     {
-        private static string[] Str1 =
+        public static string[] Str1 =
         {
             "",
             "Server=192.168.70.120;Port=5432;Database=suz;User Id=postgres;Password=postgres;",

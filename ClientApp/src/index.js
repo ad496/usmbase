@@ -18,7 +18,7 @@ import {TiInputCheckedOutline} from "react-icons/all"
 
 
 
-const ob=new ObserverMenu('root2')
+
 
 
 
