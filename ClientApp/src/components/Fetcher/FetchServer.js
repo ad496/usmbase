@@ -55,5 +55,10 @@
         this.base=undefined;
         this.table=undefined;
         this.where=undefined;
+        this.searchTree={
+            type:undefined,
+            str:undefined
+        }
     }
+    
 }

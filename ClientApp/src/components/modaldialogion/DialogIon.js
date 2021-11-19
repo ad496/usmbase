@@ -7,6 +7,7 @@ import "./styleDialog.css"
 import {v4 as uuidv4} from 'uuid';
 
 
+
 /**
  * обертка компонента модального окна, требуется точка монтирования
  */

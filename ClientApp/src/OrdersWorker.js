@@ -6,7 +6,7 @@ import {
     BlockMediator,
     PackMediator
 } from "./components/Fetcher/OrderMediator"
-import WrapperSideBar from "./components/sidebar/WrapperSideBar";
+import WrapperSideBar, {Head} from "./components/sidebar/WrapperSideBar";
 import {barDataTree} from "./components/BarDataTree";
 
 import ReactDOM from "react-dom";
@@ -14,6 +14,7 @@ import React from "react";
 import App from "./components/sidebar";
 
 import {PublicationResult} from "./components/publicationresult/PublicationResult";
+import {SearcherTree} from "./components/SearcherTree";
 
 export class OrdersWorker{
     constructor(root,base=1) {
@@ -38,6 +39,7 @@ export class OrdersWorker{
             data.closeWidth = 60;// ширина зарытого
             data.openWidth = 800;// ширина открытого
             data.isOpen = true;  // состояние  - открыто
+            data.head=new Head(<SearcherTree/>)
             barDataTree[0] = data;
             new WrapperSideBar(data, this._root);
             data.on("onclick", this.callbackTree.bind(this))

@@ -27,7 +27,7 @@ export function ComboBoxItemMenu(){
     }
     return(
         <Form.Group style={{marginBottom:"30px"}} >
-            <Form.Label>База данных</Form.Label>
+            <Form.Label style={{color:"wheat"}}>База данных</Form.Label>
             <Form.Select size="sm" style={{width:"150px",padding:0}} defaultValue={1} onChange={select} id="base-id">
                 <option value="1">suz</option>
                 <option value="2">suz21</option>

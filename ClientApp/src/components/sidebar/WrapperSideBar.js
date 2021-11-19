@@ -80,11 +80,12 @@ export default class WrapperSideBar {
 
         this.menuItems.map((m)=>{
             this._innerRefreshMap(m)
+          
         })
      }
      _innerRefreshMap(m){
-        if(this.mapMenu.has(!m.id)){
-            this.map.set(m.id,m)
+        if(this.mapMenu.has(m.id)===false){
+            this.mapMenu.set(m.id,m);
         }
         if(m.menuItems){
             m.menuItems.map((mm)=>{

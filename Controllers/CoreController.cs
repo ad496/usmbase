@@ -81,7 +81,15 @@ namespace usmbase.Controllers
                 }
             }
 
+            if (body.searchTree != null && body.searchTree.str != null && body.searchTree.type > 0)
+            {
+                return null;
+            }
+            
             return BadRequest(new Exception($"не могу обработать: {body.table}"));
+           
+
+            
         }
     }
 
@@ -90,7 +98,16 @@ namespace usmbase.Controllers
         public int @base { get; set; }
         public string table { get; set; }
         public string where { get; set; }
+        
+        public  SearchTree searchTree { get; set; }
+            
    
+    }
+
+    public class SearchTree
+    {
+        public int type { get; set; }
+        public string str { get; set; }
     }
 }
 

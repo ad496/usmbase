@@ -1,4 +1,7 @@
-﻿class ParserUrl{
+﻿/**
+ * Распарсивание строки запроса в объект ( ордер, палетта, короб ,блок)
+ */
+class ParserUrl{
     
     getObject(url){
         if(!url){

@@ -447,11 +447,22 @@ class SideBarion extends PureComponent{
         document.addEventListener("mousemove", onMouseMove);
         document.addEventListener("mouseup", onMouseUp);
     }
+    paintHead(){
+        const  s=this.barData?.head?.content??undefined
+        if(!s) return ;
+        if(React.isValidElement(s)){
+            return s
+        }
+        else{
+            return ( <span id="ionSideHeadText">{s}</span>)
+        }
+    }
     /**
      * рендериг корневого меню
      * @returns {JSX.Element}
      */
     render() {
+        console.log("66666666666666666666",this.barData.head)
         return(
             <Router>
                 <div data-ismove="1" className="movediv"  style={{background:"inherit",paddingRight:"3px",cursor:"e-resize"}}
@@ -460,8 +471,9 @@ class SideBarion extends PureComponent{
                         <div ref={this.ref1} className="ionMenu vh-100" style={{width: this.barData._currentWidth}}>
 
                                 <div className="ionSideHead" style={{display:this.getDisplay(null)}}>
-                                    <span id="ionSideHeadText">{this.barData?.head?.content??"None"}</span>
+                                    {this.paintHead()}
                                 </div>
+                            <div className=" scrollDiv vh-100" >
                                 <ul className="nav">
                                     {this.barData.menuItems.map((row,i)=>{
                                         return (
@@ -479,7 +491,7 @@ class SideBarion extends PureComponent{
                                         );
                                     })}
                                 </ul>
-
+                            </div>
                         </div>
 
                     </div>

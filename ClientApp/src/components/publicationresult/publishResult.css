@@ -2,3 +2,41 @@
     display: flex;
     flex-direction: column;
 }
+.listGroup{
+    padding: 0;
+    padding-left: 10px;
+    background: beige;
+}
+
+#root3 .wrapper {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    padding-left: 20px;
+}
+.styleA{
+    font-weight: 500;
+}
+.orderDiv{
+    margin-top: 10px;
+    background: #f6eece;
+}
+.palletDiv{
+    margin-top: 10px;
+    margin-left: 20px;
+    background: #f5ecca;
+}
+.boxDiv{
+    margin-top: 10px;
+    margin-left: 40px;
+    background: #eee3c0;
+}
+.blockDiv{
+    margin-top: 10px;
+    margin-left: 60px;
+    background: #e8dcae; 
+}
+.packDiv{
+    margin-top: 10px;
+    margin-left: 80px;
+    background: #c9bd93;
+}

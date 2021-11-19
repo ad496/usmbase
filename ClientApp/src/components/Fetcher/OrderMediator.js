@@ -30,9 +30,9 @@ export function OrderMediator(data, menu) {
         return(
             <div style={{display:"block"}}>
                 <span style={{fontSize:"10px"}}>{o.dateTimeToString+" "}</span>
-                <span style={{fontWeight:"bold"}}>{o.ordNom+" "}</span>
+                <span style={{fontWeight:500}}>{o.ordNom+" "}</span>
                     <span>{o.firstName}</span>
-                <span style={{fontWeight:"bold"}}>{o.ordText}</span>
+                <span style={{fontWeight:500}}>{o.ordText}</span>
                 <span>{o.lastName}</span>
                 
             </div>
