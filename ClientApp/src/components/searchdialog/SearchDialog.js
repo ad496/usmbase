@@ -1,8 +1,9 @@
-﻿import BaseDialog from "../modaldialogion/BaseDialog";
+﻿import BaseDialog from "modaldialogion/dist/BaseDialog";
 import Form from 'react-bootstrap/Form'
 import React from 'react';
 import {Col, Row} from "react-bootstrap";
-import {DialogAlert} from "../modaldialogion";
+import {DialogAlert} from "modaldialogion";
+import "modaldialogion/dist/styleDialog.css"
 
 export class SearchDialog extends BaseDialog{
     constructor() {

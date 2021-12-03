@@ -4,9 +4,9 @@ import React from "react";
 import Form from 'react-bootstrap/Form'
 import {Button} from "react-bootstrap";
 import {barDataTree} from "./BarDataTree";
-import {DialogAlert, DialogModalAsync} from "./modaldialogion";
+import {DialogAlert, DialogModalAsync} from "modaldialogion";
 import {SearchDialog} from "./searchdialog/SearchDialog";
-import {DialogButton} from "./modaldialogion/DialogData";
+import {DialogButton} from "modaldialogion/dist/DialogData";
 import FetchServerPost, {RequestUsm} from "./Fetcher/FetchServer";
 
 import {parserUrl} from "./models/ParserUrl";
